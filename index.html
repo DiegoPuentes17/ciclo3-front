@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="Scripts.js"></script>
+    <title>RETO3</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>CRUD RETO3</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Registrar Specialty</button>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo2">Registrar Doctor</button>
+            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo3">Registrar Client</button>
+            <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo4">Registrar Message</button>
+            <button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#demo5">Registrar Reservation</button>
+            <div id="demo" class="collapse">
+                <div class="container">
+                        <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input type="text" class="form-control" placeholder="Ingrese el Name" id="name_specialty">
+                        </div>
+                        <div class="form-group">
+                          <label for="description">Description:</label>
+                          <input type="text" class="form-control" placeholder="Ingrese la Description" id="description_spc">
+                        </div>
+                        <button  onclick="registrarSpecialty()" class="btn btn-primary">Registrar</button>
+                </div> 
+            </div>
+
+            <div id="demo2" class="collapse">
+                <div class="container">
+                        <div class="form-group">
+                          <label for="department">Department:</label>
+                          <input type="text" class="form-control" placeholder="Ingrese el Department" id="department_dc">
+                        </div>
+                        <div class="form-group">
+                          <label for="year">Year:</label>
+                          <input type="number" class="form-control" placeholder="Ingrese el Year" id="year_dc">
+                        </div>
+                        <div class="form-group">
+                          <label for="specialty">Specialty:</label>
+                          <input type="number" class="form-control" placeholder="Ingrese la Specialty" id="specialty_dc">
+                        </div>
+                        <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input type="text" class="form-control" placeholder="Ingrese el Name" id="name_dc">
+                        </div>
+                        <div class="form-group">
+                          <label for="description">Description:</label>
+                          <input type="text" class="form-control" placeholder="Ingrese la Description" id="description_dc">
+                        </div>
+                        <button  onclick="registrarDoctor()" class="btn btn-primary">Registrar</button>
+                </div> 
+            </div>
+
+            <div id="demo3" class="collapse">
+                <div class="container">
+                        <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input type="text" class="form-control" placeholder="Ingrese el Name" id="name_client">
+                        </div>
+                        <div class="form-group">
+                          <label for="email">Email:</label>
+                          <input type="email" class="form-control" placeholder="Ingrese el Email" id="email_client">
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password:</label>
+                          <input type="password" class="form-control"  placeholder="Ingrese un Password" id="password_client"></input>
+                        </div>
+                        <div class="form-group">
+                          <label for="Age">Age:</label>
+                          <input type="number" class="form-control"  placeholder="Ingrese la Age" id="age_client"></input>
+                        </div>
+                        <button  onclick="registrarClient()" class="btn btn-primary">Registrar</button>
+                </div> 
+                </div>
+                <div id="demo4" class="collapse">
+                  <div class="container">
+                          <div class="form-group">
+                            <label for="Message">Message:</label>
+                            <textarea class="form-control" placeholder="Ingrese el Message" id="message_msg"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="doctor_id">Doctor Id:</label>
+                            <input type="number" class="form-control" placeholder="Ingrese el doctor Id" id="message_doctor">
+                          </div>
+                          <div class="form-group">
+                            <label for="client_id">Client Id:</label>
+                            <input type="number" class="form-control"  placeholder="Ingrese un client_id" id="message_client"></input>
+                          </div>
+                          <button  onclick="registrarMessage()" class="btn btn-primary">Registrar</button>
+                  </div> 
+              </div>
+              <div id="demo5" class="collapse">
+                <div class="container">
+                        <div class="form-group">
+                          <label for="start_date">Start Date:</label>
+                          <input type="date" class="form-control"  id="reservation_startdate">
+                        </div>
+                        <div class="form-group">
+                          <label for="devolution_date">Devolution Date:</label>
+                          <input type="date" class="form-control"  id="reservation_devolution">
+                        </div>
+                        <div class="form-group">
+                          <label for="doctor_id">Doctor Id:</label>
+                          <input type="number" class="form-control" placeholder="Ingrese el doctor Id" id="reservation_doctor">
+                        </div>
+                        <div class="form-group">
+                          <label for="client_id">Client Id:</label>
+                          <input type="number" class="form-control"  placeholder="Ingrese un client_id" id="reservation_client"></input>
+                        </div>
+                        <button  onclick="registrarReservation()" class="btn btn-primary">Registrar</button>
+                </div> 
+            </div>
+        </div>
+    </main>
+    <div class="container">
+        <h3>Specialty</h3>
+        <button  onclick="getSpecialty()" class="btn btn-primary">Mostrar</button>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Specialty</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tSpecialty">
+
+            </tbody>
+          </table>
+    </div>
+    <div class="container">
+        <h3>Doctor</h3>
+        <button  onclick="getDoctor()" class="btn btn-primary">Mostrar</button>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Specialty</th>
+                <th>year</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tDoctor">
+
+            </tbody>
+          </table>
+    </div>
+    <div class="container">
+      <h3>Client</h3>
+      <button  onclick="getClient()" class="btn btn-primary">Mostrar</button>
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tClientes">
+
+          </tbody>
+        </table>
+  </div>
+    <div class="container">
+        <h3>Message</h3>
+        <button  onclick="getMessage()" class="btn btn-primary">Mostrar</button>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Message</th>
+                <th>Doctor</th>
+                <th>Client</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tMensajes">
+
+            </tbody>
+          </table>
+    </div>
+    <div class="container">
+      <h3>Reservation</h3>
+      <button  onclick="getReservation()" class="btn btn-primary">Mostrar</button>
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>start Date</th>
+              <th>Devolution Date</th>
+              <th>Client</th>
+              <th>Doctor</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tReservation">
+
+          </tbody>
+        </table>
+  </div>
+
+    <!-- Modales de Update -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Update</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                  <div class="form-group">
+                    <label for="name">ID:</label>
+                    <input type="number" class="form-control" placeholder="" id="id_update">
+                  </div>
+                    <div class="form-group">
+                      <label for="name">Name:</label>
+                      <input type="text" class="form-control" placeholder="Ingrese el Nombre" id="name_update">
+                    </div>
+                      <label for="Specialty">Specialty:</label>
+                      <input type="text" class="form-control" id="description_update">
+                    </div>
+                    <button  onclick="updateSpecialty()" class="btn btn-primary">Actualizar</button>
+                </div> 
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+    </div>
+
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Update</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                    <div class="form-group">
+                      <label for="id">ID:</label>
+                      <input type="number" class="form-control" placeholder="Ingrese el ID" id="idDc_update">
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Name:</label>
+                      <input type="text" class="form-control" placeholder="Ingrese el Nombre" id="nameDc_update">
+                    </div>
+                    <div class="form-group">
+                      <label for="department_dc">Department:</label>
+                      <input type="text" class="form-control" placeholder="Ingrese el Department" id="departmentDc_update">
+                    </div>
+                    <div class="form-group">
+                      <label for="Year">Year:</label>
+                      <input type="number" class="form-control" placeholder="Ingrese el Year" id="yearDc_update">
+                    </div>
+                    <div class="form-group">
+                      <label for="SpecialtyId">SpecialtyId:</label>
+                      <input type="number" class="form-control" placeholder="Ingrese el SpecialtyId" id="specialtyDc_update">
+                    </div>
+                    <button  onclick="updateDoctor()" class="btn btn-primary">Actualizar</button>
+                </div> 
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+    </div>
+    <div class="modal" id="myModal3">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Update</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                    <div class="form-group">
+                        <label for="id">ID:</label>
+                        <input type="number" class="form-control" placeholder="Ingrese el ID" id="idCl_update">
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control"  placeholder="Ingrese el nombre" id="nameCl_update">
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Email:</label>
+                        <input type="email" class="form-control"  placeholder="Ingrese el email" id="emailCl_update">
+                      </div>
+                      <div class="form-group">
+                        <label for="Password">Password:</label>
+                        <input type="text" class="form-control"  placeholder="Ingrese el password" id="passwordCl_update">
+                      </div>
+                      <div class="form-group">
+                        <label for="Age">Age:</label>
+                        <input type="text" class="form-control"  placeholder="Ingrese el age" id="ageCl_update">
+                      </div>
+                      
+                      <button  onclick="updateClient()" class="btn btn-primary">Actualizar</button>
+                </div> 
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+    </div>
+    <div class="modal" id="myModal4">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Update</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="container">
+                  <div class="form-group">
+                      <label for="id">ID:</label>
+                      <input type="number" class="form-control" placeholder="Ingrese el ID" id="IdMessage_update">
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Message:</label>
+                      <textarea type="text" class="form-control"  placeholder="Ingrese el mensaje" id="txtMessage_update"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="id_doctor">Doctor Id:</label>
+                      <input type="number" class="form-control"  placeholder="Ingrese el id" id="idDoctor_update">
+                    </div>
+                    <div class="form-group">
+                      <label for="id_client">Client Id:</label>
+                      <input type="number" class="form-control"  placeholder="Ingrese el id" id="idClient_update">
+                    </div>  
+                    <button  onclick="updateMessage()" class="btn btn-primary">Actualizar</button>
+              </div> 
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+    
+        </div>
+    </div>
+  </div>
+  <div class="modal" id="myModal5">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Update</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="container">
+                <div class="form-group">
+                    <label for="id">ID:</label>
+                    <input type="number" class="form-control" placeholder="Ingrese el ID" id="IdReservation_update">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">start_date:</label>
+                    <input type="date" class="form-control"  placeholder="Ingrese el startDate" id="startDate_update">
+                  </div>
+                  <div class="form-group">
+                    <label for="id_doctor">devolution_date:</label>
+                    <input type="date" class="form-control"  placeholder="Ingrese el devolutionDate" id="devolutionDate_update">
+                  </div>
+                  <div class="form-group">
+                    <label for="id_client">Client Id:</label>
+                    <input type="number" class="form-control"  placeholder="Ingrese el id" id="idClientRes_update">
+                  </div>
+                  <div class="form-group">
+                    <label for="id_doctor">Reservation Id:</label>
+                    <input type="number" class="form-control"  placeholder="Ingrese el id" id="idDoctorRes_update">
+                  </div>   
+                  <button  onclick="updateReservation()" class="btn btn-primary">Actualizar</button>
+            </div> 
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+  </div>
+</div>
+</body>
+</html>
